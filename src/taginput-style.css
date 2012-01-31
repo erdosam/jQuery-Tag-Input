@@ -1,0 +1,13 @@
+/* erd tag input style */
+.erd-tag_input_container { background: white; }
+.erd-tag_input_container .erd-tag_list_container { float: none; height: 0; padding-right: 0; margin-top: 0; padding-left: 0;}
+.erd-tag_input_container .erd-tag_list_container .erd-tag_item_inline,
+.erd-tag_input_container .erd-tag_input_box input  { font-family: Arial, sans, serif; font-size: 12px; }
+.erd-tag_input_container .erd-tag_list_container .erd-tag_item_inline { display: block; border: 1px solid #ddd; padding: 1px 0 0.5px 4px; margin-left: 3px; color: #0085cf; float: left; margin-top: 2px; height: 16px; }
+.erd-tag_input_container .erd-tag_list_container .erd-tag_item_inline:hover { border-color: #0085cf;}
+.erd-tag_input_container .erd-tag_list_container .erd-tag_item_inline .erd-tag_remove_btn { background: url("/images/tag_remove.png") no-repeat scroll center 0 transparent; color: transparent; display: inline-block; height: 11px; margin: 2px 0; padding: 0 4px; vertical-align: top; width: 11px; }
+.erd-tag_input_container .erd-tag_list_container .erd-tag_item_inline .erd-tag_remove_btn:hover { background-position: center -11px; }
+.erd-tag_input_container .erd-tag_input_box { float: left; width: auto; height: 22px; padding: 2px 0 0 5px; overflow: hidden;}
+.erd-tag_input_container .erd-tag_input_box input { width: 90%; border: none; padding: 2px; height: 15px;}
+.erd-tag_input_container .erd-tag_input_box input.load_autocomplete { background: url("/images/small-loader.gif") no-repeat 90% center; }
+.erd-tag_input_container .erd-tag_input_box input:focus { box-shadow: none; outline-width: 0; -moz-box-shadow: none; }
