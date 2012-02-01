@@ -20,6 +20,8 @@
     var keys = {
         ENTER : 13,
         BACKSPACE : 8,
+        TAB: 9,
+        SPACE: 32,
         ARROW_LEFT : 37,
         ARROW_UP : 38,
         ARROW_RIGHT : 39,
@@ -36,7 +38,8 @@
         };
         this._defaults = {
             fieldName : "taginput-field",
-            preventTagDuplication : true
+            preventTagDuplication : true,
+            separatorKey: "ENTER"
         };
     }
 
@@ -66,7 +69,7 @@
                 }
                 var inst = this._newInst(jTarget, _opt);
                 inst.settings = $.extend({}, _opt || {});
-                if (nodeName == "input" || nodeName == "div" && jTarget.attr("contenteditable") == "true") {
+                if (nodeName == "input") {
                     if (this._getInst(_target)) {
                         return;
                     }
@@ -130,6 +133,11 @@
                 var val = input.val().trim().replace(/\s{2,}/g, ' ');
                 var noDuplication = this._get(_inst, "preventTagDuplication");
                 
+                if (!val.trim().length) {
+                    //nothing to add if the value is empty
+                    return false;
+                }
+                
                 if (noDuplication) {
                     var isPrevent = false;
                     $(".erd-tag_remove_btn", _inst.container).each(function () {
@@ -172,9 +180,10 @@
                 var isHandled = false;
                 var inst = $.tagInput._getInst(_event.target);
                 var val = target.val();
+                var separator = keys[(target.TagInput("option", "separatorKey") +"").toUpperCase()] || keys.ENTER;
                 
                 switch (_event.keyCode) {
-                    case keys.ENTER:
+                    case separator:
                         //console.info("Key is down " +target.val());
                         if (val) {
                             isHandled = true;
@@ -257,9 +266,10 @@
             sourceUrl : "/test-ajax.php",
             select : function (_event, _ui) {
                 if (!_event.keyCode || typeof _event.keyCode == "undefined") {
-                    $(_event.target).val(_ui.item.label);
+                    //$(_event.target).val(_ui.item.label);
                     var inst = $.tagInput._getInst(_event.target);
                     $.tagInput._appendNewTag(_event.target, inst);
+                    $(_event.target).val("");
                   //TODO: add any conditionals here so user except you can customize the plugin
                     setTimeout(function () {
                         if (options.openOnFocus) {

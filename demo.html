@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery Tag Input : Demo</title>
+
+<link rel="stylesheet" type="text/css" href="flick/jquery-ui-1.8.17.custom.css" />
+<link rel="stylesheet" type="text/css" href="src/taginput-style.css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript" src="src/jquery.taginput.js"></script>
+
+<script type="text/javascript" >
+$(document).ready(function () {
+    $("#inputNonAutocomplete1").TagInput();
+    
+    $("#inputNonAutocomplete2").TagInput({
+        separatorKey: "space"
+    });
+    
+    var availableTags = [
+         "ActionScript",
+         "AppleScript",
+         "Asp",
+         "BASIC",
+         "C",
+         "C++",
+         "Clojure",
+         "COBOL",
+         "ColdFusion",
+         "Erlang",
+         "Fortran",
+         "Groovy",
+         "Haskell",
+         "Java",
+         "JavaScript",
+         "Lisp",
+         "Perl",
+         "PHP",
+         "Python",
+         "Ruby",
+         "Scala",
+         "Scheme"
+     ];
+    
+    $("#inputAutocomplete1").AutocompleteTagInput({
+        source: availableTags
+    });
+    
+    $("#inputAutocomplete2").AutocompleteTagInput({
+        source: availableTags,
+        separatorKey: "space"
+    });
+});
+</script>
+
+</head>
+<body>
+
+<div>
+    <pre>
+    $("#inputNonAutocomplete1").TagInput();
+    </pre>
+    <input id="inputNonAutocomplete1" />
+</div>
+
+<div>
+    <pre>
+    $("#inputNonAutocomplete2").TagInput({
+        separatorKey: "space"
+    });
+    </pre>
+    <input id="inputNonAutocomplete2" />
+</div>
+
+<div>
+    <input id="inputAutocomplete1" />
+</div>
+
+<div>
+    <input id="inputAutocomplete2" />
+</div>
+
+</body>
+</html>
